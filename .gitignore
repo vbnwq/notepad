@@ -19,3 +19,14 @@ project.assets.json
 # OS
 Thumbs.db
 .DS_Store
+
+# Python / PyInstaller
+__pycache__/
+*.pyc
+/dist/
+*.spec
+/PersiaPad.exe
+# خروجی موقت PyInstaller (پوشه‌های کش داخل build/)
+/build/PersiaPad/
+/build/PersiaPad_test/
+.github/
