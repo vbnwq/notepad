@@ -1,0 +1,53 @@
+راهنما: ساخت خودکار PersiaPad.exe توسط GitHub
+=================================================
+
+به‌خاطر محدودیت دسترسیِ توکن، فایل workflow نتوانست مستقیم push شود.
+اگر می‌خواهی گیت‌هاب خودش exe را بسازد، این کار را بکن:
+
+۱) در مخزن گیت‌هاب، یک فایل با این مسیر بساز:
+       .github/workflows/build-exe.yml
+۲) محتوای زیر را داخلش کپی کن و commit کن.
+۳) به تب Actions برو، اجرا را ببین، و از بخش Artifacts فایل PersiaPad.exe را دانلود کن.
+
+------------------ محتوای فایل ------------------
+name: Build PersiaPad.exe
+
+on:
+  push:
+    branches: [ main, genspark_ai_developer ]
+  workflow_dispatch: {}
+
+jobs:
+  build-windows-exe:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyInstaller
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyinstaller
+
+      - name: Build single-file EXE
+        run: >
+          python -m PyInstaller --noconfirm --onefile --windowed
+          --name PersiaPad
+          --icon src/app.ico
+          --paths app
+          --hidden-import persiapad
+          --hidden-import uuid
+          PersiaPad_entry.py
+
+      - name: Upload EXE artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PersiaPad-exe
+          path: dist/PersiaPad.exe
+          if-no-files-found: error
+-------------------------------------------------

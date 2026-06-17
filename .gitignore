@@ -1,0 +1,32 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+build/publish/
+installer/Output/
+*.user
+
+# .NET
+*.dll
+*.pdb
+project.assets.json
+*.nuget.*
+
+# IDE
+.vs/
+.idea/
+*.suo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Python / PyInstaller
+__pycache__/
+*.pyc
+/dist/
+*.spec
+/PersiaPad.exe
+# خروجی موقت PyInstaller (پوشه‌های کش داخل build/)
+/build/PersiaPad/
+/build/PersiaPad_test/
+.github/

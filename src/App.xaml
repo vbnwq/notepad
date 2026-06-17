@@ -1,0 +1,9 @@
+<Application x:Class="PersiaPad.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             ShutdownMode="OnMainWindowClose"
+             Startup="App_OnStartup">
+    <Application.Resources>
+        <!-- Theme resources are injected at runtime from ThemeManager -->
+    </Application.Resources>
+</Application>
